@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_splash/ui/app_theme.dart';
+import 'package:flutter_splash/ui/page/collection_page.dart';
 import 'package:flutter_splash/ui/page/home_page.dart';
+import 'package:flutter_splash/ui/page/profile_page.dart';
+import 'package:flutter_splash/ui/page/search_page.dart';
+import 'package:flutter_splash/ui/page/upload_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -37,6 +41,13 @@ class EntryPoint extends StatefulWidget {
 
 class _EntryPointState extends State<EntryPoint> {
   int _index = 0;
+  List<Widget> _pages = List.of([
+    HomePage(),
+    CollectionPage(),
+    UploadPage(),
+    SearchPage(),
+    ProfilePage()
+  ]);
 
   @override
   void initState() {
@@ -46,7 +57,7 @@ class _EntryPointState extends State<EntryPoint> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: HomePage()),
+      body: SafeArea(child: _pages[_index]),
       bottomNavigationBar: BottomNavigationBar(
         onTap: _onBottomNavTap,
         currentIndex: _index,
