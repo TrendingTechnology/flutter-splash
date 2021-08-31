@@ -7,23 +7,30 @@ class PhotoItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height / 3,
+      width: MediaQuery
+          .of(context)
+          .size
+          .width,
+      height: MediaQuery
+          .of(context)
+          .size
+          .height / 3,
       margin: EdgeInsets.symmetric(vertical: 8.0),
       child: Stack(
         children: [
           CachedNetworkImage(
             imageUrl:
-                "https://picsum.photos/${(MediaQuery.of(context).size.width).floor()}",
-            imageBuilder: (context, imageProvider) => Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: imageProvider,
-                    fit: BoxFit.cover,
-                    colorFilter:
+            "https://picsum.photos/400/600",
+            imageBuilder: (context, imageProvider) =>
+                Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: imageProvider,
+                        fit: BoxFit.cover,
+                        colorFilter:
                         ColorFilter.mode(Colors.red, BlendMode.colorBurn)),
-              ),
-            ),
+                  ),
+                ),
             placeholder: (context, url) =>
                 Center(child: CircularProgressIndicator()),
             errorWidget: (context, url, error) =>
@@ -32,29 +39,30 @@ class PhotoItem extends StatelessWidget {
           Align(
             alignment: Alignment.bottomLeft,
             child: Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    colors: [
-                      Colors.black87,
-                      Colors.transparent,
-                    ],
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                    stops: [0.0, 1.0],
-                    tileMode: TileMode.decal),
-              ),
+              // decoration: BoxDecoration(
+              //   gradient: LinearGradient(
+              //       colors: [
+              //         Colors.black87,
+              //         Colors.transparent,
+              //       ],
+              //       begin: Alignment.bottomCenter,
+              //       end: Alignment.topCenter,
+              //       stops: [0.0, 0.75],
+              //       tileMode: TileMode.decal),
+              // ),
               padding: const EdgeInsets.all(16.0),
               child: Row(
                 children: [
                   CircleAvatar(
                     radius: 20,
-                    backgroundImage: NetworkImage("https://picsum.photos/50"),
+                    backgroundImage: NetworkImage("https://picsum.photos/128"),
                   ),
                   SizedBox(width: 8),
                   Text(
                     "picsum.photos",
                     style: TextStyle(
-                        fontSize: 14, fontFamily: "Lato", color: Colors.white),
+                        fontSize: 16, fontFamily: "Lato",  color: Colors.
+                        white),
                   )
                 ],
               ),
