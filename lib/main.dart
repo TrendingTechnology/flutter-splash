@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_splash/ui/app_theme.dart';
 import 'package:flutter_splash/ui/page/collection_page.dart';
@@ -48,6 +49,14 @@ class _EntryPointState extends State<EntryPoint> {
     SearchPage(),
     ProfilePage()
   ]);
+  List<BottomNavigationBarItem> _bottomNavigationBarItems = List.of([
+    BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+    BottomNavigationBarItem(
+        icon: Icon(Icons.bookmarks_rounded), label: "Collections"),
+    BottomNavigationBarItem(icon: Icon(Icons.upload_file), label: "Upload"),
+    BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
+    BottomNavigationBarItem(icon: Icon(Icons.person), label: "Account"),
+  ]);
 
   @override
   void initState() {
@@ -57,21 +66,24 @@ class _EntryPointState extends State<EntryPoint> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: _pages[_index]),
+      body: SafeArea(
+          child: PageTransitionSwitcher(
+              transitionBuilder: (Widget child,
+                  Animation<double> primaryAnimation,
+                  Animation<double> secondaryAnimation) {
+                return FadeThroughTransition(
+                  animation: primaryAnimation,
+                  secondaryAnimation: secondaryAnimation,
+                  child: child,
+                );
+              },
+              child: _pages[_index])),
       bottomNavigationBar: BottomNavigationBar(
         onTap: _onBottomNavTap,
         currentIndex: _index,
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.grey,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.bookmarks_rounded), label: "Collections"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.upload_file), label: "Upload"),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Account"),
-        ],
+        items: _bottomNavigationBarItems,
       ),
     );
   }
