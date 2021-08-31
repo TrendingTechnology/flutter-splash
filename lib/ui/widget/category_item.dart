@@ -14,8 +14,7 @@ class CategoryItem extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
             child: CachedNetworkImage(
-              imageUrl:
-                  "https://picsum.photos/${(MediaQuery.of(context).size.width / 3).floor()}",
+              imageUrl: "https://picsum.photos/128",
               imageBuilder: (context, imageProvider) => Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
