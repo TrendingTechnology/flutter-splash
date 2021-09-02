@@ -36,6 +36,9 @@ class _CollectionPageState extends State<CollectionPage> {
             maxLines: 3,
           ),
         ),
+        SizedBox(
+          height: 8,
+        ),
         ListView(
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
