@@ -26,8 +26,6 @@ class SearchRequest {
   /// [color]	Filter results by color. Optional. Valid values are: black_and_white, black, white, yellow, orange, red, purple, magenta, green, teal, and blue.
   ///
   /// [orientation]	Filter by photo orientation. Optional. (Valid values: landscape, portrait, squarish)
-  ///
-  ///
   Future<List<PhotoResponse>> searchPhoto(String query,
       {int page: 1, int perPage: 10, String orderBy: "latest"}) async {
     Response<List<dynamic>> response = await _dio.get("/search/photos");
