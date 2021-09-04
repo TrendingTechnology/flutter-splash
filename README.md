@@ -18,7 +18,7 @@ Under development.
   <img src="images/search.png" width="250" />
     <img src="images/app_icon.png" width="128" height="128"/>
 </p>
-![]()
+
 
 ### References
 
